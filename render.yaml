@@ -1,0 +1,29 @@
+# Render Blueprint for Trend Velocity Backend
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: trend-velocity-backend
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: pnpm install --filter=backend... && pnpm turbo build --filter=backend...
+    startCommand: cd apps/backend && pnpm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+      - key: STORE_CORS
+        sync: false
+      - key: ADMIN_CORS
+        sync: false
+      - key: AUTH_CORS
+        sync: false
