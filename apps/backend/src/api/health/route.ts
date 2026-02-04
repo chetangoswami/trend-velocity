@@ -24,6 +24,7 @@ export async function GET(
             version: "1.0.0",
         });
     } catch (error) {
+        console.error("Health check failed:", error);
         res.status(503).json({
             status: "unhealthy",
             service: "trend-velocity-backend",
