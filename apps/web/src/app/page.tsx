@@ -23,13 +23,13 @@ export default function Home() {
 
         {/* Quick Links */}
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-          <a
-            href="/products"
-            className="group flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-3 text-sm font-medium text-white transition-all hover:from-amber-400 hover:to-orange-500 hover:shadow-lg hover:shadow-orange-500/25"
+          <span
+            title="Coming soon"
+            className="group flex cursor-not-allowed items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500/50 to-orange-600/50 px-6 py-3 text-sm font-medium text-white/70"
           >
             Browse Collection
             <svg
-              className="h-4 w-4 transition-transform group-hover:translate-x-1"
+              className="h-4 w-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -41,7 +41,7 @@ export default function Home() {
                 d="M9 5l7 7-7 7"
               />
             </svg>
-          </a>
+          </span>
           <a
             href="/dashboard"
             className="flex items-center justify-center gap-2 rounded-full border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:border-zinc-500 hover:bg-zinc-800/50"
