@@ -43,7 +43,7 @@ export default function Home() {
             </svg>
           </a>
           <a
-            href="/admin"
+            href="/dashboard"
             className="flex items-center justify-center gap-2 rounded-full border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:border-zinc-500 hover:bg-zinc-800/50"
           >
             Admin Dashboard
