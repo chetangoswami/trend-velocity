@@ -25,6 +25,7 @@
         "rootDir": "./src",
         "esModuleInterop": true,
         "skipLibCheck": true,
+        "baseUrl": ".",
         "resolveJsonModule": true
     },
     "include": [
@@ -33,6 +34,13 @@
     "exclude": [
         "node_modules",
         "dist",
+        "dist",
         ".medusa"
-    ]
+    ],
+    "ts-node": {
+        "transpileOnly": true,
+        "files": true,
+        "experimentalSpecifierResolution": "node",
+        "swc": true
+    }
 }

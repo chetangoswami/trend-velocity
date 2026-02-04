@@ -137,7 +137,7 @@ pnpm seed
 - [ ] Upstash: Redis ping responds
 - [ ] Render: `/health` endpoint returns 200
 - [ ] Vercel: Home page renders "Trend Velocity"
-- [ ] Medusa Admin: `/admin` accessible
+- [ ] Medusa Admin: `/dashboard` accessible
 
 ---
 

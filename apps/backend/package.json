@@ -13,11 +13,15 @@
         "@medusajs/admin-sdk": "^2.12.0",
         "@medusajs/cache-redis": "^2.12.0",
         "@medusajs/cli": "^2.12.0",
+        "@medusajs/dashboard": "^2.13.1",
+        "@medusajs/draft-order": "^2.13.1",
         "@medusajs/event-bus-redis": "^2.12.0",
         "@medusajs/framework": "^2.12.0",
         "@medusajs/medusa": "^2.12.0",
+        "@medusajs/ui": "^4.1.1",
         "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+        "react-dom": "^18.3.1",
+        "zod": "3.24.1"
     },
     "devDependencies": {
         "@medusajs/test-utils": "^2.12.0",

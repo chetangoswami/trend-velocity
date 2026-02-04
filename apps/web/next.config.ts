@@ -22,6 +22,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "*.onrender.com",
       },
+      {
+        protocol: "https",
+        hostname: "pub-4569e4e5d557441e896fc4ed5f345253.r2.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
 };

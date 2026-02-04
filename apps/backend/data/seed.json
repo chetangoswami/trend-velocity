@@ -1,0 +1,140 @@
+{
+    "products": [
+        {
+            "id": "prod_01",
+            "title": "Neon Genesis Hoodie",
+            "subtitle": "Limited Edition",
+            "description": "High-quality cotton hoodie with neon accents.",
+            "handle": "neon-genesis-hoodie",
+            "is_giftcard": false,
+            "status": "published",
+            "thumbnail": "https://pub-4569e4e5d557441e896fc4ed5f345253.r2.dev/fashion/hoodie.webp",
+            "images": [
+                "https://pub-4569e4e5d557441e896fc4ed5f345253.r2.dev/fashion/hoodie.webp",
+                "https://pub-4569e4e5d557441e896fc4ed5f345253.r2.dev/fashion/hoodie-back.webp"
+            ],
+            "options": [
+                {
+                    "title": "Size",
+                    "values": [
+                        "S",
+                        "M",
+                        "L",
+                        "XL"
+                    ]
+                }
+            ],
+            "variants": [
+                {
+                    "title": "S",
+                    "sku": "NGH-S",
+                    "prices": [
+                        {
+                            "currency_code": "usd",
+                            "amount": 12000
+                        }
+                    ],
+                    "options": [
+                        {
+                            "value": "S"
+                        }
+                    ]
+                },
+                {
+                    "title": "M",
+                    "sku": "NGH-M",
+                    "prices": [
+                        {
+                            "currency_code": "usd",
+                            "amount": 12000
+                        }
+                    ],
+                    "options": [
+                        {
+                            "value": "M"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "prod_02",
+            "title": "Cyberpunk Visor",
+            "subtitle": "Accessory",
+            "description": "Futuristic visor with HUD display mockup.",
+            "handle": "cyberpunk-visor",
+            "is_giftcard": false,
+            "status": "published",
+            "thumbnail": "https://pub-4569e4e5d557441e896fc4ed5f345253.r2.dev/fashion/visor.webp",
+            "images": [
+                "https://pub-4569e4e5d557441e896fc4ed5f345253.r2.dev/fashion/visor.webp"
+            ],
+            "options": [
+                {
+                    "title": "Color",
+                    "values": [
+                        "Black",
+                        "Silver"
+                    ]
+                }
+            ],
+            "variants": [
+                {
+                    "title": "Black",
+                    "sku": "CV-BLK",
+                    "prices": [
+                        {
+                            "currency_code": "usd",
+                            "amount": 4500
+                        }
+                    ],
+                    "options": [
+                        {
+                            "value": "Black"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "prod_03",
+            "title": "Gravity Boots",
+            "subtitle": "Footwear",
+            "description": "Anti-gravity boots for moonwalking on earth.",
+            "handle": "gravity-boots",
+            "is_giftcard": false,
+            "status": "published",
+            "thumbnail": "https://pub-4569e4e5d557441e896fc4ed5f345253.r2.dev/fashion/boots.webp",
+            "images": [
+                "https://pub-4569e4e5d557441e896fc4ed5f345253.r2.dev/fashion/boots.webp"
+            ],
+            "options": [
+                {
+                    "title": "Size",
+                    "values": [
+                        "9",
+                        "10",
+                        "11"
+                    ]
+                }
+            ],
+            "variants": [
+                {
+                    "title": "10",
+                    "sku": "GB-10",
+                    "prices": [
+                        {
+                            "currency_code": "usd",
+                            "amount": 25000
+                        }
+                    ],
+                    "options": [
+                        {
+                            "value": "10"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

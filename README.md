@@ -1,44 +1,67 @@
 # Trend Velocity 💎
 
+<div align="center">
+
 > **Where Jewelry Meets the Moment**
-> A Headless Commerce Monorepo built with Medusa v2, Next.js 16, and TurboRepo.
+>
+> *Built LIVE on Stream using the BMAD Artificial Intelligence Workflow*
 
-## 🏗 Architecture
+[![TurboRepo](https://img.shields.io/badge/Monorepo-Turbo-ef4444?style=for-the-badge&logo=turborepo)](https://turbo.build/)
+[![Medusa](https://img.shields.io/badge/Backend-Medusa_v2-purple?style=for-the-badge&logo=medusa)](https://medusajs.com/)
+[![Next.js](https://img.shields.io/badge/Frontend-Next.js_16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Sanity](https://img.shields.io/badge/CMS-Sanity-f03e2f?style=for-the-badge&logo=sanity)](https://sanity.io/)
+[![Supabase](https://img.shields.io/badge/Database-Supabase-3ecf8e?style=for-the-badge&logo=supabase)](https://supabase.com/)
 
-This project is a monorepo managed by **TurboRepo** and **pnpm workspaces**.
+</div>
+
+---
+
+## 🚀 About The Project
+
+**Trend Velocity** is a high-performance, headless commerce "Impulse Store" designed to capture the "TikTok browsing" energy. It features an immersive, infinite-scroll product feed, instant checkout, and a media-rich experience—all built on a robust, scalable enterprise architecture.
+
+This project is unique because it is **Built Live in Public** using the **BMad (Brain-Machine-Augmented-Design)** method. It demonstrates how "Agentic AI" (AI Agents acting as Architects, Product Managers, and Senior Developers) can collaborate with a human pilot to build complex software at warp speed.
+
+## 🎥 Built Live on Stream
+
+This repository is the result of a live-coding rapid development session.
+
+-   **Human Pilot**: Chetan Goswami
+-   **AI Co-Pilot**: BMad "Antigravity" Agent
+-   **Methodology**: Agentic Waterfall (Architect -> PM -> Dev -> Reviewer)
+-   **Goal**: Zero-to-Production Enterprise Commerce in record time.
+
+## 🏗 Architecture & Stack
+
+A modern monorepo managed by **TurboRepo** and **pnpm workspaces**.
+
+| Domain | Technology | Description |
+| :--- | :--- | :--- |
+| **Backend** | **Medusa v2** | Headless Commerce Engine (Node.js). Handles products, carts, orders, and auth. |
+| **Storefront** | **Next.js 16** | React 19 RC, Tailwind v4, Server Actions, Framer Motion. |
+| **CMS** | **Sanity.io** | Structured content for "Wear Testing" media and rich storytelling. |
+| **Database** | **Supabase** | Managed PostgreSQL + Vector Search capabilities. |
+| **Cache/Bus** | **Upstash** | Serverless Redis for sessions and event bus. |
 
 ### 📦 Workspaces
 
-- **`apps/backend`**: [Medusa v2](https://medusajs.com/) Headless Commerce Engine.
-  - Connected to **Supabase** (PostgreSQL) and **Upstash** (Redis).
-  - Handles Products, Orders, Auth, and Admin Dashboard.
-- **`apps/web`**: [Next.js 16](https://nextjs.org/) Storefront.
-  - Modern React 19, Tailwind CSS v4.
-  - Server-side rendering (ISR/SSR) for core commerce pages.
-- **`apps/studio`**: Sanity CMS Studio (Content Management).
-- **`packages/dto`**: Shared TypeScript types and DTOs.
-
-## 🚀 Tech Stack
-
-| Component | Technology | Hosting |
-| :--- | :--- | :--- |
-| **Monorepo** | TurboRepo, pnpm | GitHub |
-| **Backend** | Medusa v2 (Node.js) | Render |
-| **Storefront** | Next.js 16 (React 19) | Vercel |
-| **Database** | PostgreSQL | Supabase |
-| **Cache/Events** | Redis | Upstash |
-| **Content** | Sanity.io | Sanity Cloud |
+-   `apps/backend`: Medusa Server & Admin API.
+-   `apps/web`: Next.js Customer Storefront (Mobile-First Design).
+-   `apps/studio`: Sanity Content Studio (CMS).
+-   `packages/dto`: Shared TypeScript contracts and types.
 
 ## 🛠 Local Development
 
 ### Prerequisites
-- Node.js 20+
-- pnpm 9+
-- Git
+
+-   Node.js 20+
+-   pnpm 9+
+-   Git
 
 ### Quick Start
 
 1.  **Clone & Install**
+
     ```bash
     git clone https://github.com/chetangoswami/trend-velocity.git
     cd trend-velocity
@@ -46,25 +69,30 @@ This project is a monorepo managed by **TurboRepo** and **pnpm workspaces**.
     ```
 
 2.  **Environment Setup**
-    - Copy `.env.template` to `.env` in `apps/backend` and `apps/web`.
-    - Fill in Supabase and Upstash credentials.
+    -   Copy `.env.template` to `.env` in `apps/backend` and `apps/web`.
+    -   Configure Supabase and Upstash credentials.
 
-3.  **Run Locally**
+3.  **Run the Monorepo**
+
     ```bash
     pnpm dev
     ```
-    - Storefront: `http://localhost:3000`
-    - Backend: `http://localhost:9000`
-    - Admin: `http://localhost:9000/app` (Admin Build currently disabled for deployment)
 
-## 🚢 Deployment
+    -   **Storefront**: `http://localhost:3000`
+    -   **Studio (CMS)**: `http://localhost:3333`
+    -   **Backend**: `http://localhost:9000`
 
-### Backend (Render)
-- Connects to `apps/backend`.
-- **Build Command**: `pnpm install && pnpm turbo build --filter=backend...`
-- **Start Command**: `cd apps/backend && pnpm db:migrate && pnpm start`
+## 🧠 The BMad Workflow
 
-### Storefront (Vercel)
-- Connects to `apps/web`.
-- **Framework Preset**: Next.js
-- **Root Directory**: `apps/web`
+We use a structured efficient multi-agent workflow:
+
+1.  **Architect Agent**: Defines the high-level system design and tech stack match.
+2.  **Product Manager Agent**: Breaks down requirements into Epics and User Stories with detailed ACs.
+3.  **Developer Agent**: Implementation of stories using TDD (Test Driven Development) and Atomic Commits.
+4.  **Reviewer Agent**: Adversarial code review to ensure security, performance, and best practices.
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ and 🤖 by Chetan Goswami</sub>
+</div>
