@@ -91,6 +91,19 @@ We use a structured efficient multi-agent workflow:
 3.  **Developer Agent**: Implementation of stories using TDD (Test Driven Development) and Atomic Commits.
 4.  **Reviewer Agent**: Adversarial code review to ensure security, performance, and best practices.
 
+
+## 🗺️ Roadmap & Upcoming Features
+
+We are actively building this project commit-by-commit. Here is what's coming next:
+
+- [x] **Project Foundation**: Skeleton, Monorepo Setup, Deployment Pipeline.
+- [x] **Infinite Feed**: Virtualized TikTok-style product scrolling.
+- [ ] **Impulse Sheet**: "One-Tap" product details overlay.
+- [ ] **Instant Cart**: Optimistic UI for immediate add-to-cart feedback.
+- [ ] **Checkout Flow**: Streamlined, mobile-first guest checkout.
+- [ ] **Theme System**: Dynamic theme switching based on product campaigns.
+- [ ] **Search Overlay**: Full-screen semantic search experience.
+
 ---
 
 <div align="center">
