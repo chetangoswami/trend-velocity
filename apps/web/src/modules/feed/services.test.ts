@@ -97,4 +97,48 @@ describe('getFeedProducts', () => {
         const result = await getFeedProducts()
         expect(result).toEqual([]) // Should return empty array
     })
+
+    it('should attach wearTestMedia to the product object and include detailed variants', async () => {
+        // Mock Medusa
+        const mockMedusaList = jest.fn().mockResolvedValue({
+            products: [{
+                id: 'prod_1',
+                title: 'Product With Variants',
+                variants: [
+                    {
+                        id: 'var_1',
+                        title: 'Variant 1',
+                        prices: [{ amount: 1000, currency_code: 'usd' }],
+                        options: [{ id: 'opt_1', value: 'Medium' }],
+                        inventory_quantity: 10
+                    }
+                ]
+            }]
+        })
+            ; (Medusa as unknown as jest.Mock).mockImplementation(() => ({
+                products: { list: mockMedusaList }
+            }))
+
+        // Mock Sanity
+        const mockSanityProducts = [{
+            medusaId: 'prod_1',
+            heroImage: { _type: 'image', asset: { _ref: 'img-ref-1' } },
+            wearTestMedia: [{ _type: 'image', asset: { _ref: 'wt-1' } }]
+        }]
+            ; (getProductsByMedusaIds as jest.Mock).mockResolvedValue(mockSanityProducts)
+
+        const result = await getFeedProducts()
+
+        expect(result).toHaveLength(2) // Hero + 1 Wear Test
+
+        const item = result[0]
+        // Check wearTestMedia on product object
+        expect(item.product.wearTestMedia).toBeDefined()
+        expect(item.product.wearTestMedia).toHaveLength(1)
+        expect(item.product.wearTestMedia![0]).toBe('http://mock-url.com/image.jpg')
+
+        // Check variants fields
+        expect(item.product.variants[0].options).toBeDefined()
+        expect(item.product.variants[0].inventory_quantity).toBe(10)
+    })
 })

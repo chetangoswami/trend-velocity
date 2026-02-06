@@ -1,5 +1,34 @@
 export type FeedItemType = 'product_hero' | 'wear_test'
 
+// Minimal Medusa Product Interface for Feed
+export interface ProductVariant {
+    id: string
+    title: string
+    prices: {
+        amount: number
+        currency_code: string
+    }[]
+    options?: {
+        id: string
+        value: string
+    }[]
+    inventory_quantity?: number
+}
+
+export interface Product {
+    id: string
+    title: string
+    description: string | null
+    thumbnail: string | null
+    variants: ProductVariant[]
+    options: {
+        id: string
+        title: string
+        values: { value: string }[]
+    }[]
+    wearTestMedia?: string[]
+}
+
 export interface FeedItem {
     id: string
     type: FeedItemType
@@ -8,9 +37,8 @@ export interface FeedItem {
     width?: number
     height?: number
     aspectRatio?: number
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    product: any
-    priority?: boolean // For LCP
+    product: Product
+    priority?: boolean
 }
 
 export interface FeedState {

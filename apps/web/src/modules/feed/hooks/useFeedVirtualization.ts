@@ -31,6 +31,11 @@ export function useFeedVirtualization({
     const currentIndexRef = useRef(0)
 
     const setCurrentIndex = useCallback((index: number) => {
+        // Bounds check - ignore out-of-bounds indices
+        if (index < 0 || index >= itemCount) {
+            return
+        }
+
         const prevIndex = currentIndexRef.current
         const direction = index >= prevIndex ? 'down' : 'up'
 
