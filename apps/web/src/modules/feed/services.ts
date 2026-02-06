@@ -21,13 +21,17 @@ export async function getFeedProducts(page: number = 0, limit: number = 20): Pro
     try {
         const { products: medusaProducts } = await medusa.products.list({
             limit,
-            offset: page * limit
+            offset: page * limit,
+            fields: "id,title,thumbnail,options,variants.id,variants.title,variants.prices,variants.options,variants.inventory_quantity"
         })
         products = medusaProducts
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         console.error("Failed to fetch products from Medusa:", (error as any)?.message || error)
+        if ((error as any)?.response?.data) {
+            console.error("Medusa API Error Details:", JSON.stringify((error as any).response.data, null, 2))
+        }
         return []
     }
 
@@ -41,6 +45,14 @@ export async function getFeedProducts(page: number = 0, limit: number = 20): Pro
     for (const product of products) {
         // Find matching Sanity product by Medusa ID
         const sanityProduct = sanityProducts.find(sp => sp.medusaId === product.id)
+
+        // Attach wearTestMedia to product object if available
+        if (sanityProduct?.wearTestMedia && Array.isArray(sanityProduct.wearTestMedia)) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (product as any).wearTestMedia = sanityProduct.wearTestMedia
+                .filter((m: any) => m._type === 'image')
+                .map((m: any) => urlForImage(m).url())
+        }
 
         // Fallback if no Sanity data found (use Medusa thumbnail)
         if (!sanityProduct) {

@@ -7,9 +7,10 @@ import { FeedItem as FeedItemType } from '../types'
 interface FeedItemProps {
     item: FeedItemType
     isActive: boolean
+    onDetails?: () => void
 }
 
-export const FeedItem = ({ item, isActive }: FeedItemProps) => {
+export const FeedItem = ({ item, isActive, onDetails }: FeedItemProps) => {
     return (
         <div className="relative w-full h-full overflow-hidden bg-black flex items-center justify-center">
             {/* Blurred Background (Desktop only) -> Task 3.4 */}
@@ -19,7 +20,8 @@ export const FeedItem = ({ item, isActive }: FeedItemProps) => {
                     alt=""
                     fill
                     className="object-cover blur-3xl scale-110"
-                    quality={10} // Low quality for blur
+                    quality={25}
+                    sizes="100vw"
                     aria-hidden="true"
                 />
             </div>
@@ -40,14 +42,44 @@ export const FeedItem = ({ item, isActive }: FeedItemProps) => {
 
                 {/* Video support removed per requirements (v1 is Image only) */}
 
-                {/* Overlay Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pt-20">
-                    <h3 className="text-white text-lg font-bold">{item.product?.title}</h3>
-                    {item.type === 'wear_test' && (
-                        <span className="inline-block px-2 py-1 mt-2 text-xs font-semibold text-black bg-white rounded-full">
-                            Wear Test
-                        </span>
+                <div
+                    className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pt-20 cursor-pointer active:scale-[0.99] transition-transform flex items-end gap-3"
+                    onClick={onDetails}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View details for ${item.product?.title}`}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            onDetails?.()
+                        }
+                    }}
+                >
+                    {/* Product Bubble Thumbnail */}
+                    {item.product.thumbnail && (
+                        <div className="relative w-12 h-12 rounded-full border-2 border-white/20 overflow-hidden shrink-0 mb-1">
+                            <Image
+                                src={item.product.thumbnail}
+                                alt={item.product.title}
+                                fill
+                                className="object-cover"
+                                sizes="48px"
+                            />
+                        </div>
                     )}
+
+                    <div className="flex-1">
+                        <h3 className="text-white text-lg font-bold leading-tight">{item.product?.title}</h3>
+                        {item.product?.variants?.[0]?.prices?.[0] && (
+                            <p className="text-[#d1751e] text-sm font-bold">
+                                {new Intl.NumberFormat('en-US', { style: 'currency', currency: item.product.variants[0].prices[0].currency_code }).format(item.product.variants[0].prices[0].amount / 100)}
+                            </p>
+                        )}
+                        {item.type === 'wear_test' && (
+                            <span className="inline-block px-2 py-0.5 mt-1 text-[10px] uppercase tracking-wide font-bold text-black bg-white rounded-full">
+                                Wear Test
+                            </span>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

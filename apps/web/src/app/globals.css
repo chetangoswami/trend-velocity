@@ -1,8 +1,40 @@
 @import "tailwindcss";
 
+/* ============================================
+   DESIGN TOKENS & CSS CUSTOM PROPERTIES
+   Story 1.4: Mobile-First Layout Implementation
+   ============================================ */
+
 :root {
+  /* Color Tokens */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Touch Target Standards (Apple HIG / WCAG) */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+
+  /* Spacing Base Unit (4px grid) */
+  --spacing-unit: 4px;
+
+  /* Theme Tokens (for future Trend Engine integration) */
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --surface: #0a0a0a;
+  --surface-foreground: #ededed;
+
+  /* Navigation Chrome */
+  --nav-opacity: 0.7;
+  --nav-opacity-hidden: 0;
+  --nav-transition-duration: 300ms;
+  --nav-hide-delay: 3000ms;
+
+  /* Z-Index Scale */
+  --z-feed: 0;
+  --z-ghost-controls: 10;
+  --z-overlay: 20;
+  --z-nav: 30;
+  --z-modal: 40;
 }
 
 @theme inline {
@@ -10,6 +42,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-brand-base: #1e354c;
+  --color-accent-gold: #d1751e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +54,121 @@
   }
 }
 
+/* ============================================
+   EDGE-TO-EDGE RESET (AC: 1)
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  overscroll-behavior: none;
+  /* Prevent pull-to-refresh interference */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+/* ============================================
+   TOUCH TARGET UTILITIES (AC: 2)
+   ============================================ */
+
+/* Base touch target class - ensures 44px minimum */
+.touch-target {
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+}
+
+/* Comfortable touch target (48px) for primary actions */
+.touch-target-comfortable {
+  min-width: var(--touch-target-comfortable);
+  min-height: var(--touch-target-comfortable);
+}
+
+/* Interactive element reset with touch target */
+.interactive {
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ============================================
+   ACCESSIBILITY UTILITIES (AC: 3)
+   ============================================ */
+
+/* Screen reader only - visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible for ghost controls */
+.sr-only:focus,
+.focus-visible-ring:focus-visible {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  outline: 2px solid var(--primary-foreground);
+  outline-offset: 2px;
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--primary-foreground);
+  border-radius: 0.25rem;
+  z-index: var(--z-ghost-controls);
+}
+
+/* ============================================
+   HIDE SCROLLBAR UTILITY
+   ============================================ */
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
+   SAFE AREA UTILITIES
+   ============================================ */
+
+/* Safe area inset for notched devices (iPhone X+) */
+.safe-area-inset {
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
 }
